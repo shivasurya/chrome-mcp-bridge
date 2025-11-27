@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chrome MCP Bridge</title>
+  <style>
+    body {
+      width: 350px;
+      padding: 15px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+    }
+
+    h2 {
+      margin: 0 0 15px 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .status {
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status.connected {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .status.disconnected {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .status-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .status.connected .status-indicator {
+      background-color: #28a745;
+    }
+
+    .status.disconnected .status-indicator {
+      background-color: #dc3545;
+    }
+
+    .token-section {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    }
+
+    .token-section label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #495057;
+    }
+
+    .token-section input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+      box-sizing: border-box;
+    }
+
+    .token-section .help-text {
+      font-size: 11px;
+      color: #6c757d;
+      margin-top: 5px;
+    }
+
+    .info {
+      color: #666;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .button-secondary {
+      background-color: #6c757d;
+    }
+
+    .button-secondary:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔐 Chrome MCP Bridge</h2>
+
+  <div id="status" class="status disconnected">
+    <div class="status-indicator"></div>
+    <span id="statusText">Disconnected</span>
+  </div>
+
+  <div class="token-section">
+    <label for="tokenInput">Access Token:</label>
+    <input type="text" id="tokenInput" placeholder="Enter your MCP server token">
+    <div class="help-text">
+      Generate token: <code>node generate-token.cjs</code>
+    </div>
+  </div>
+
+  <button id="saveTokenBtn">Save Token & Connect</button>
+  <button id="reconnectBtn" class="button-secondary">Reconnect</button>
+
+  <div class="info" style="margin-top: 15px;">
+    <p><strong>Server:</strong> <span id="serverUrl">ws://localhost:8765</span></p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

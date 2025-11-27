@@ -1,0 +1,24 @@
+{
+  "name": "chrome-mcp-bridge",
+  "version": "1.0.0",
+  "description": "MCP server for Island browser automation via Chrome extension",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "chrome-mcp-bridge": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/ws": "^8.5.13",
+    "typescript": "^5.7.2"
+  }
+}
