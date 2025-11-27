@@ -34,7 +34,6 @@ Thumbs.db
 coverage/
 
 # Extension artifacts
-*.png
 !extension/icons/*.png
 *.crx
 *.pem
